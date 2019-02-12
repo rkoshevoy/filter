@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        for (var i = 0; i < originalTableArray.length; i++) {
+        originalTableArray.forEach(function(item, i){
             if (storesCities.indexOf(originalTableArray[i].city) == -1) {
                 storesCities.push(originalTableArray[i].city);
             }
-        }
+        })
 
         storesCities.sort();
         storesCities.unshift('Все города')
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
         selectLayout += '<input type="text" id="filter-input" name="city" autocomplete="off" placeholder="Введите название города">';
 
         selectLayout += '<ul class="options" id="options">';
-
-        for (var i = 0; i < storesCities.length; i++) {
-            selectLayout += '<li class="option">' + storesCities[i] + '</li>';
-        }
+        
+        storesCities.forEach(function(item, i){
+            selectLayout += '<li class="option">' + storesCities[i] + '</li>';            
+        })
 
         selectLayout += '</ul>';
 
@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 newTable += '<table>';
                 newTable += '<tbody>';
-
-                for (var i = 0; i < newTableArray.length; i++) {
+                    
+                newTableArray.forEach(function(item, i){
                     newTable += '<tr>';
                     newTable += '<td>';
                     newTable += newTableArray[i].city;
@@ -143,13 +143,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     newTable += newTableArray[i].address;
                     newTable += '</td>';
                     newTable += '<td>';
-                    newTable += newTableArray[i].phone;
-                    newTable += '</td>';
-                    newTable += '<td>';
                     newTable += newTableArray[i].name;
                     newTable += '</td>';
                     newTable += '</tr>';
-                }
+                })
 
                 newTable += '</tbody>';
                 newTable += '</table>';
